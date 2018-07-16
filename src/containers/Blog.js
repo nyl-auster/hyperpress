@@ -8,7 +8,6 @@ export default withRouteData(({ posts }) => (
     All Posts:
     {posts.map(post => (
       <div key={post.id}>
-        {console.log(post)}
         <Link to={`/post/${post.id}/`}>{post.title.rendered}</Link>
         <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
         <hr />

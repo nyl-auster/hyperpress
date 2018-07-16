@@ -5,24 +5,8 @@ export default {
     title: "React Static"
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      "https://public-api.wordpress.com/wp/v2/sites/yannboisselier.wordpress.com/posts?per_page=100"
-    );
     return [
-      {
-        path: "/",
-        component: "src/containers/Blog",
-        getData: () => ({
-          posts
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: "src/containers/Post",
-          getData: () => ({
-            post
-          })
-        }))
-      },
+      await generatePostsRoutes(),
       {
         is404: true,
         component: "src/containers/404"
@@ -45,4 +29,24 @@ export default {
   //   ]
   //   return config
   // },
+};
+
+const generatePostsRoutes = async () => {
+  const { data: posts } = await axios.get(
+    "https://public-api.wordpress.com/wp/v2/sites/yannboisselier.wordpress.com/posts?per_page=100"
+  );
+  return {
+    path: "/",
+    component: "src/containers/Blog",
+    getData: () => ({
+      posts
+    }),
+    children: posts.map(post => ({
+      path: `/post/${post.id}`,
+      component: "src/containers/Post",
+      getData: () => ({
+        post
+      })
+    }))
+  };
 };
