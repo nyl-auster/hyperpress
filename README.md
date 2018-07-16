@@ -1,4 +1,6 @@
-# React-Static - Apollo and Redux Example
+# HyperPress
+
+## React-Static - Apollo and Redux Example
 
 This example is based on the most basic version of react-static available, and adds:
 
