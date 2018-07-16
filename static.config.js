@@ -8,6 +8,10 @@ export default {
     return [
       ...(await buildPostRoutes()),
       {
+        path: "/",
+        component: "src/containers/Home"
+      },
+      {
         is404: true,
         component: "src/containers/404"
       }

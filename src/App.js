@@ -17,9 +17,11 @@ const App = () => (
       <Router>
         <div>
           <nav>
-            <img src="/images/before.png" />
             <Link exact to="/">
               Home
+            </Link>
+            <Link exact to="/posts/page/1">
+              Blog
             </Link>
 
             {/*<Link to="/about">About</Link>*/}
