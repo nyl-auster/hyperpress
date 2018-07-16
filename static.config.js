@@ -6,7 +6,7 @@ export default {
   }),
   getRoutes: async () => {
     return [
-      await buildPostRoutes(),
+      ...(await buildPostRoutes()),
       {
         is404: true,
         component: "src/containers/404"
